@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_theme_project/state/ThemeSetting.dart';
+import 'package:flutter_theme_project/state/dialog_overlay.dart';
+import 'package:flutter_theme_project/state/dialog_screen.dart';
 import 'package:flutter_theme_project/state/state_container.dart';
 
 void main() async{
@@ -49,12 +51,32 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: GestureDetector(
               onTap: (){
-                print("Click");
-                StateContainer.of(context).updateTheme(ThemeOptions.LIGHT);
+                //StateContainer.of(context).updateTheme(ThemeOptions.LIGHT);
+                showAppDialog(
+                    context: context,
+                    builder: (_) => DialogOverlay(
+                        title: "Testing purpose",
+                        optionsList: getThemeList(),));
               },
               child: Text("Nothing")),
         ),
       )
     );
+  }
+
+
+
+  List<DialogListItem> getThemeList() {
+    List<DialogListItem> ret = [];
+    ThemeOptions.values.forEach((ThemeOptions value) {
+      ThemeSetting theme = ThemeSetting(value);
+      ret.add(DialogListItem(
+          option: theme.getDisplayName(context),
+          action: () {
+            StateContainer.of(context).updateTheme(ThemeSetting(value));
+            Navigator.of(context).pop();
+          }));
+    });
+    return ret;
   }
 }

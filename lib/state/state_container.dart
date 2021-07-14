@@ -39,12 +39,24 @@ class StateContainerState extends State<StateContainer>{
 
   BaseTheme currentTheme = DarkTheme();
 
-  // Change the theme
-  Future<void> updateTheme(ThemeOptions themeOptions) async {
-    ThemeSetting theme = ThemeSetting(themeOptions);
+  // // Change the theme
+  // Future<void> updateTheme(ThemeOptions themeOptions) async {
+  //   ThemeSetting theme = ThemeSetting(themeOptions);
+  //
+  //   if(theme.getTheme()!=currentTheme){
+  //     if(mounted){
+  //       setState(() {
+  //         this.currentTheme = theme.getTheme();
+  //       });
+  //     }
+  //   }
+  // }
 
-    if(theme.getTheme()!=currentTheme){
-      if(mounted){
+  // Change the theme
+  Future<void> updateTheme(ThemeSetting theme) async {
+
+    if (theme.getTheme() != currentTheme) {
+      if (mounted) {
         setState(() {
           this.currentTheme = theme.getTheme();
         });
@@ -55,7 +67,8 @@ class StateContainerState extends State<StateContainer>{
   @override
   void initState() {
     super.initState();
-    updateTheme(ThemeOptions.DARK);
+    //updateTheme(ThemeOptions.DARK);
+    updateTheme(ThemeSetting(ThemeOptions.values[0]));
   }
 
   @override
