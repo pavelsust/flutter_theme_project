@@ -39,10 +39,10 @@ Future<T?> showAppDialog<T>({
 
   final ThemeData theme = Theme.of(context);
 
+
   return showGeneralDialog(
     context: context,
-    pageBuilder: (BuildContext buildContext, Animation<double> animation,
-        Animation<double> secondaryAnimation) {
+    pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
       final Widget pageChild = child ?? Builder(builder: builder);
       return SafeArea(
         child: Builder(builder: (BuildContext context) {
@@ -52,8 +52,7 @@ Future<T?> showAppDialog<T>({
     },
     barrierDismissible: barrierDismissible,
     barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
-    barrierColor: StateContainer.of(context).currentTheme.primaryColor!,
-    transitionDuration: const Duration(milliseconds: 0),
+    transitionDuration: const Duration(milliseconds: 200),
     transitionBuilder: _buildMaterialDialogTransitions,
   );
 }

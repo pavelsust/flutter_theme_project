@@ -65,7 +65,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 
-
   List<DialogListItem> getThemeList() {
     List<DialogListItem> ret = [];
     ThemeOptions.values.forEach((ThemeOptions value) {

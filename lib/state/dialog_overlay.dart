@@ -108,14 +108,6 @@ class _DialogOverlayState extends State<DialogOverlay>
                 decoration: BoxDecoration(
                   color: StateContainer.of(context).currentTheme.secondaryColor,
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: StateContainer.of(context).currentTheme.primaryColor!,
-                      offset: Offset(0, 30),
-                      blurRadius: 60,
-                      spreadRadius: -10,
-                    ),
-                  ],
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
